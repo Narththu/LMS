@@ -25,4 +25,19 @@ export class BorrowedBooksComponent implements OnInit {
     });
   }
 
+  return(title, bookID) {
+    this.bookService.returnBook(title, bookID)
+    .pipe(first())
+    .subscribe(
+      data => {
+        // @ts-ignore
+        // this.book = JSON.parse(JSON.stringify(data));
+        // console.log("data => ", data)  
+        window.location.reload();
+      },
+      error => {
+        console.log(error);
+      })
+  }
+
 }

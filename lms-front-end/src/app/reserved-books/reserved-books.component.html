@@ -9,6 +9,7 @@
         <h6> Reserved person : {{b.reservedPerson}} </h6>
         <h6> Reserved date : {{b.reservedDate}} </h6>
         <h6> Last date to borrow : {{b.lastDateToBorrow}} </h6>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="borrow(b.title, b.bookID, userId)">Borrow</button>
         </div>
 
     </li>

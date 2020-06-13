@@ -45,13 +45,19 @@ export class BookService {
   }
 
   // add book to borrowed books
-  addToBorrowedBooks() {
-    return this.http.post<any>(`${this.apiUrl}/borrowed`,{})
+  addToBorrowedBooks(title, bookID, userId) {
+    return this.http.post<any>(`${this.apiUrl}/borrowed`,{title, bookID, userId})
+    .pipe(map(borrowedBook=>{
+      return borrowedBook
+    }))
   }
 
   // make returned book as available
-  returnBook() {
-    return this.http.post<any>(`${this.apiUrl}/returned`,{})
+  returnBook(title, bookID) {
+    return this.http.post<any>(`${this.apiUrl}/returned`,{title, bookID})
+    .pipe(map(returnedBook=>{
+      return returnedBook
+    }))
   }
 
 

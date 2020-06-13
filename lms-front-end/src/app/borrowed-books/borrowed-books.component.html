@@ -9,6 +9,7 @@
         <h6> Borrower : {{b.borrower}} </h6>
         <h6> Borrowed date : {{b.borrowedDate}} </h6>
         <h6> Return date : {{b.returnDate}} </h6>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="return(b.title, b.bookID)">Return</button>
         </div>
 
     </li>
