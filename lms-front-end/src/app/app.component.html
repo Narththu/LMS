@@ -5,14 +5,40 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/events" routerLinkActive="active">Events</a>
+    <!-- For user -->
+    <ul class="navbar-nav mr-auto" *ngIf="_authService.isUserLoggedIn()">
+      <li class="nav-item active">
+        <a class="nav-link" href="/homeUser">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/special" routerLinkActive="active">Members</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Reserved Books</a>
+          <a class="dropdown-item" href="#">Borrowed Books</a>
+        </div>
       </li>
-    </ul> -->
+    </ul>
+
+    <!-- For admin -->
+    <ul class="navbar-nav mr-auto" *ngIf="_authService.isAdminLoggedIn()">
+      <li class="nav-item active">
+        <a class="nav-link" href="/homeAdmin">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/addBook">Add Books</a>
+          <a class="dropdown-item" href="/reservedBooks">Reserved Books</a>
+          <a class="dropdown-item" href="/borrowedBooks">Borrowed Books</a>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Auth buttons -->
     <ul class="navbar-nav">
         <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
         <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>

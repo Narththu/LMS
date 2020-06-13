@@ -22,9 +22,20 @@ export class LoginComponent implements OnInit {
     .subscribe(
       res => {
         localStorage.setItem('token', res.token)
-        this._router.navigate(['/home'])
+        localStorage.setItem('userCategory', res.category);
+        localStorage.setItem('currentUserId', res.userId);
+        if(res.category == "admin") {
+          this._router.navigate(['/homeAdmin'])
+        }
+        else {
+          this._router.navigate(['/homeUser'])
+        }
       },
-      err => console.log(err)
+      err => {
+        console.log(err)
+        console.log('user login failed')
+        this._router.navigate(['/login'])
+      }
     ) 
   }
 

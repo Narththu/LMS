@@ -24,6 +24,8 @@ export class AuthService {
 
   logoutUser() {
     localStorage.removeItem('token')
+    localStorage.removeItem('userCategory')
+    localStorage.removeItem('currentUserId')
     this._router.navigate(['/'])
   }
 
@@ -31,6 +33,43 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 
+  getUserCategory() {
+    return localStorage.getItem('userCategory')
+  }
+
+  getCurrentUserId() {
+    return localStorage.getItem('currentUserId')
+  }
+  
+  isAdmin() {
+    let isadmin = (localStorage.getItem('userCategory') == 'admin');
+    if(isadmin) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
+  isUserLoggedIn() {
+    if(this.loggedIn() && !this.isAdmin()) {
+      return true
+    }
+    else{
+      return false
+    }
+  }
+
+  isAdminLoggedIn() {
+    if(this.loggedIn() && this.isAdmin()) {
+      return true
+    }
+    else{
+      return false
+    }
+  }
+
+  // return token exists in the browser or not
   loggedIn() {
     return !!localStorage.getItem('token')    
   }

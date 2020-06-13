@@ -1,0 +1,18 @@
+<ul>
+    <div class="card-columns">
+    <li class="card border-primary mb-3" style="width: 18rem; height: 10rem; margin: 5px" *ngFor="let b of book" >
+        
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+        <h5 class="card-title">Title : {{b.title}} </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Book ID : {{b.bookID}} </h6>
+        <h6> Reserved person : {{b.reservedPerson}} </h6>
+        <h6> Reserved date : {{b.reservedDate}} </h6>
+        <h6> Last date to borrow : {{b.lastDateToBorrow}} </h6>
+        </div>
+
+    </li>
+    <h3 *ngIf="book.length==0"> No reserved books </h3>
+    </div>
+</ul>
+

@@ -1,0 +1,16 @@
+<ul>
+    <div class="card-columns">
+    <li class="card border-primary mb-3" style="width: 18rem; height: 10rem; margin: 5px" *ngFor="let b of book" >
+        
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+        <h5 class="card-title">Title : {{b.title}} </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Author : {{b.author}} </h6>
+        <h6> Category : {{b.category}} </h6>
+        <h6> Available copies : {{b.availableCopies}} </h6>
+        <h6> Total copies : {{b.totalCopies}} </h6>
+        </div>
+
+    </li>
+    </div>
+</ul>
